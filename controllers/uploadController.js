@@ -49,7 +49,7 @@ exports.uploadViaDashboard = async (req, res) => {
 
         const upload = await Upload.create({
             user: req.user.id,
-            fileName: cloudinaryResult.public_id,
+            fileName: req.file.originalname,
             originalName: req.file.originalname,
             fileType,
             fileSize: req.file.size,
@@ -121,7 +121,7 @@ exports.uploadViaApi = async (req, res) => {
 
         const upload = await Upload.create({
             user: req.user.id,
-            fileName: cloudinaryResult.public_id,
+            fileName: req.file.originalname,
             originalName: req.file.originalname,
             fileType,
             fileSize: req.file.size,
