@@ -37,20 +37,8 @@ app.use(helmet({
     contentSecurityPolicy: false,
 }));
 
-const allowedOrigins = [
-    'http://localhost:3000',
-    'https://cloudprime.netlify.app'
-];
-
-// CORS
 app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('CORS not allowed'));
-        }
-    },
+    origin: true,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-API-Key']
